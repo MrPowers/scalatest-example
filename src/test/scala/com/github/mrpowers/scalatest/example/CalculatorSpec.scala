@@ -4,14 +4,11 @@ import org.scalatest.FunSpec
 
 class CalculatorSpec extends FunSpec {
 
-  describe("addNumbers") {
+  it("adds two numbers") {
 
-    it("adds two numbers") {
-
-      assert(Calculator.addNumbers(3, 4) === 7)
-
-    }
+    assert(Calculator.addNumbers(3, 4) === 7)
 
   }
+
 
 }
