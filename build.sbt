@@ -6,7 +6,7 @@ version := "0.0.1"
 
 scalaVersion := "2.12.10"
 
-libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.1" % "test"
 libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.4.4" % "provided"
 libraryDependencies += "MrPowers" % "spark-fast-tests" % "0.20.0-s_2.12" % "test"
 libraryDependencies += "mrpowers" % "spark-daria" % "0.36.0-s_2.12" % "test"
