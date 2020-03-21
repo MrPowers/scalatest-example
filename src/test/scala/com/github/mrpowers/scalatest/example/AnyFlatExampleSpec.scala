@@ -10,6 +10,10 @@ class AnyFlatExampleSpec
 
   import spark.implicits._
 
+  "a" should "b" in {
+    println("works")
+  }
+
   it should "have size 0" in {
     assert(Set.empty.size === 0)
   }
