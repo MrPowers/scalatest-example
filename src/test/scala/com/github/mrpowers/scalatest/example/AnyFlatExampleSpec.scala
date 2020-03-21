@@ -1,10 +1,10 @@
 package com.github.mrpowers.scalatest.example
 
 import com.github.mrpowers.spark.fast.tests.DataFrameComparer
-import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.FlatSpec
 
 class AnyFlatExampleSpec
-    extends AnyFlatSpec
+    extends FlatSpec
     with DataFrameComparer
     with SparkSessionTestWrapper {
 
