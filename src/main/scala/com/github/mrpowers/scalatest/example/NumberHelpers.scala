@@ -9,4 +9,8 @@ object NumberHelpers {
     df.withColumn(outputColName, col(inputColName) % 2 === lit(0))
   }
 
+def oneThird(inputColName: String, outputColName: String)(df: DataFrame): DataFrame = {
+  df.withColumn(outputColName, col(inputColName) / 3)
+}
+
 }
