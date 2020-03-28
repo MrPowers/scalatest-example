@@ -2,6 +2,7 @@ package com.github.mrpowers.scalatest.example
 
 import org.scalatest.FunSpec
 import com.github.mrpowers.spark.daria.sql.SparkSessionExt._
+import com.github.mrpowers.spark.daria.sql.ColumnExt._
 import com.github.mrpowers.spark.fast.tests.ColumnComparer
 import org.apache.spark.sql.types._
 import org.apache.spark.sql.functions._
@@ -11,26 +12,6 @@ class ColumnFunctionsSpec
     extends FunSpec
     with ColumnComparer
     with SparkSessionTestWrapper {
-
-  describe("bestLowerRemoveAllWhitespace") {
-    it("downcases and removes all whitespace in a string") {
-      val df = spark.createDF(
-        List(
-          ("  BOO     ", "boo"),
-          (" HOO   ", "hoo"),
-          (null, null)
-        ), List(
-          ("cry", StringType, true),
-          ("expected", StringType, true)
-        )
-      ).withColumn(
-        "clean_cry",
-        bestLowerRemoveAllWhitespace(col("cry"))
-      )
-
-      assertColumnEquality(df, "clean_cry", "expected")
-    }
-  }
 
   it("demonstrates demonstrates how substring handles null") {
     val df = spark.createDF(
@@ -65,5 +46,31 @@ class ColumnFunctionsSpec
 
     df.show()
   }
+
+  describe("zz bestLowerRemoveAllWhitespace") {
+    it("downcases and removes all whitespace in a string") {
+      val df = spark.createDF(
+        List(
+          ("  BOO     ", "boo"),
+          (" HOO   ", "hoo"),
+          (null, null)
+        ), List(
+          ("cry", StringType, true),
+          ("expected", StringType, true)
+        )
+      ).withColumn(
+        "clean_cry",
+        bestLowerRemoveAllWhitespace(col("cry"))
+      )
+
+      assertColumnEquality(df, "clean_cry", "expected")
+    }
+
+    it("runs tests with evalString") {
+      assert(bestLowerRemoveAllWhitespace(lit("  BOO     ")).evalString() === "boo")
+      assert(bestLowerRemoveAllWhitespace(lit(" HOO   ")).evalString() === "hoo")
+    }
+  }
+
 
 }
