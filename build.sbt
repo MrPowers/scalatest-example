@@ -1,4 +1,4 @@
-resolvers += "Spark Packages Repo" at "http://dl.bintray.com/spark-packages/maven"
+resolvers += "Spark Packages Repo" at "https://repos.spark-packages.org"
 
 name := "scalatest-example"
 
